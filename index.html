@@ -1,13 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>PHP in HTML</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('your-background-image.jpg') center/cover no-repeat fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+        }
+
+        .profile {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .profile h2 {
+            margin: 0;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .social-icons i {
+            font-size: 24px;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Welcome to my website!</h1>
+    <div class="profile">
+        <img src="your-photo.jpg" alt="Your Photo">
+        <h2>Alongbar Basumatary</h2>
+    </div>
 
-    <p>This is regular HTML content.</p>
+    <div class="social-icons">
+        <a href="your-facebook-link" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="your-twitter-link" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
 
 </body>
 </html>
