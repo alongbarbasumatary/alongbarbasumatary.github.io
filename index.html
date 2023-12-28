@@ -12,7 +12,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: #fff;
+            color: #00ff00; /* Set text color to green */
         }
 
         .profile {
@@ -44,11 +44,7 @@
 
         .social-icons a {
             text-decoration: none;
-            color: #fff;
-        }
-
-        .social-icons i {
-            font-size: 24px;
+            color: #00ff00; /* Set icon color to green */
         }
 
         /* Matrix Rain Effect */
@@ -58,15 +54,16 @@
             left: 0;
             width: 100%;
             height: 100%;
+            overflow: hidden;
             pointer-events: none;
             z-index: -2; /* Place the matrix below the profile */
         }
 
-        .matrix-drop {
+        .matrix-code {
             position: absolute;
-            color: #00ff00;
             font-size: 20px; /* Adjust the font size for larger characters */
-            opacity: 0.6;
+            line-height: 30px; /* Adjust the line height for spacing */
+            white-space: nowrap;
             animation: fall 3s linear infinite;
         }
 
@@ -95,25 +92,30 @@
     </div>
 
     <script>
-        // Adding Matrix drops dynamically
+        // Adding Matrix code dynamically
         const matrixRain = document.getElementById('matrix-rain');
         
-        function createMatrixDrop() {
-            const drop = document.createElement('span');
-            drop.className = 'matrix-drop';
-            drop.innerHTML = Math.random() > 0.9 ? '1' : '0'; // 10% chance for '1'
-            drop.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-            return drop;
+        function createMatrixCode() {
+            const code = document.createElement('span');
+            code.className = 'matrix-code';
+            code.innerHTML = getRandomCode(); // Get random code characters
+            code.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+            return code;
+        }
+
+        function getRandomCode() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{}|;:,.<>?';
+            return Array.from({ length: 10 }, () => characters[Math.floor(Math.random() * characters.length)]).join('');
         }
 
         function startMatrixRain() {
             setInterval(() => {
-                const drop = createMatrixDrop();
-                matrixRain.appendChild(drop);
+                const code = createMatrixCode();
+                matrixRain.appendChild(code);
                 setTimeout(() => {
-                    drop.remove();
-                }, 3000); // Remove drops after 3 seconds
-            }, 100); // Add a new drop every 100 milliseconds
+                    code.remove();
+                }, 3000); // Remove code after 3 seconds
+            }, 100); // Add a new code every 100 milliseconds
         }
 
         startMatrixRain();
