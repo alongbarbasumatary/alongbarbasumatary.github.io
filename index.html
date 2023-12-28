@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alongbar Basumatary</title> <!-- Updated title -->
+    <title>Alongbar Basumatary</title>
     <style>
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-color: black; /* Set background color to black */
+            background-color: black;
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: #00ff00; /* Set text color to green */
+            color: #00ff00;
+            overflow: hidden; /* Hide overflow to prevent horizontal scrollbar */
         }
 
         .profile {
             margin-top: 50px;
             text-align: center;
-            position: relative; /* Ensure the profile is above the matrix background */
+            position: relative;
             z-index: 1;
         }
 
@@ -34,6 +35,8 @@
             margin: 0;
             font-weight: bold;
             font-size: 80%;
+            position: relative;
+            animation: fall 3s linear forwards; /* Animation for falling h2 */
         }
 
         .social-icons {
@@ -44,7 +47,7 @@
 
         .social-icons a {
             text-decoration: none;
-            color: #00ff00; /* Set icon color to green */
+            color: #00ff00;
         }
 
         /* Matrix Rain Effect */
@@ -56,15 +59,15 @@
             height: 100%;
             overflow: hidden;
             pointer-events: none;
-            z-index: -2; /* Place the matrix below the profile */
+            z-index: -2;
         }
 
         .matrix-code {
             position: absolute;
-            font-size: 20px; /* Adjust the font size for larger characters */
-            line-height: 30px; /* Adjust the line height for spacing */
+            font-size: 20px;
+            line-height: 30px;
             white-space: nowrap;
-            animation: fall 3s linear infinite;
+            animation: fall 3s linear infinite; /* Animation for falling matrix code */
         }
 
         @keyframes fall {
@@ -98,8 +101,8 @@
         function createMatrixCode() {
             const code = document.createElement('span');
             code.className = 'matrix-code';
-            code.innerHTML = getRandomCode(); // Get random code characters
-            code.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+            code.innerHTML = getRandomCode();
+            code.style.left = `${Math.random() * 100}vw`;
             return code;
         }
 
@@ -114,8 +117,8 @@
                 matrixRain.appendChild(code);
                 setTimeout(() => {
                     code.remove();
-                }, 3000); // Remove code after 3 seconds
-            }, 100); // Add a new code every 100 milliseconds
+                }, 3000);
+            }, 100);
         }
 
         startMatrixRain();
