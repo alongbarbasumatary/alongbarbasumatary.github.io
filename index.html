@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alongbar Basumatary</title>
+    <title>Alongbar Basumatary</title> <!-- Updated title -->
     <style>
         body {
             margin: 0;
@@ -13,17 +13,6 @@
             flex-direction: column;
             align-items: center;
             color: #fff;
-        }
-
-        #matrix {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            opacity: 0.3;
-            z-index: -1;
         }
 
         .profile {
@@ -62,19 +51,18 @@
             font-size: 24px;
         }
 
-        /* Matrix Effect */
-        #matrix-layer {
+        /* Matrix Rain Effect */
+        #matrix-rain {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
             pointer-events: none;
             z-index: -2; /* Place the matrix below the profile */
         }
 
-        .matrix-character {
+        .matrix-drop {
             position: absolute;
             color: #00ff00;
             font-size: 20px; /* Adjust the font size for larger characters */
@@ -94,7 +82,7 @@
 </head>
 <body>
 
-    <div id="matrix-layer"></div>
+    <div id="matrix-rain"></div>
 
     <div class="profile">
         <img src="your-photo.jpg" alt="Your Photo">
@@ -107,28 +95,28 @@
     </div>
 
     <script>
-        // Adding Matrix characters dynamically
-        const matrixLayer = document.getElementById('matrix-layer');
+        // Adding Matrix drops dynamically
+        const matrixRain = document.getElementById('matrix-rain');
         
-        function createMatrixCharacter() {
-            const character = document.createElement('span');
-            character.className = 'matrix-character';
-            character.innerHTML = Math.random() > 0.9 ? '1' : '0'; // 10% chance for '1'
-            character.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-            return character;
+        function createMatrixDrop() {
+            const drop = document.createElement('span');
+            drop.className = 'matrix-drop';
+            drop.innerHTML = Math.random() > 0.9 ? '1' : '0'; // 10% chance for '1'
+            drop.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+            return drop;
         }
 
-        function startMatrixAnimation() {
+        function startMatrixRain() {
             setInterval(() => {
-                const character = createMatrixCharacter();
-                matrixLayer.appendChild(character);
+                const drop = createMatrixDrop();
+                matrixRain.appendChild(drop);
                 setTimeout(() => {
-                    character.remove();
-                }, 5000); // Remove characters after 5 seconds
-            }, 100); // Add a new character every 100 milliseconds
+                    drop.remove();
+                }, 3000); // Remove drops after 3 seconds
+            }, 100); // Add a new drop every 100 milliseconds
         }
 
-        startMatrixAnimation();
+        startMatrixRain();
     </script>
 
 </body>
