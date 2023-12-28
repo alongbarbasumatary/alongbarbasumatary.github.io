@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alongbar Basumatary</title>
+    <title>Personal Portfolio</title>
     <style>
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background: url('your-photo.jpg') center/cover no-repeat fixed;
             display: flex;
             flex-direction: column;
             align-items: center;
             color: #fff;
         }
 
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
         .profile {
             margin-top: 50px;
             text-align: center;
+            position: relative; /* Ensure the profile is above the matrix background */
+            z-index: 1;
         }
 
         .profile img {
@@ -46,9 +58,38 @@
         .social-icons i {
             font-size: 24px;
         }
+
+        /* Matrix Effect */
+        #matrix-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .matrix-character {
+            position: absolute;
+            color: #00ff00;
+            opacity: 0.6;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-100vh);
+            }
+            to {
+                transform: translateY(100vh);
+            }
+        }
     </style>
 </head>
 <body>
+
+    <div id="matrix-layer"></div>
 
     <div class="profile">
         <img src="your-photo.jpg" alt="Your Photo">
@@ -59,6 +100,31 @@
         <a href="your-facebook-link" target="_blank"><i class="fab fa-facebook"></i></a>
         <a href="your-twitter-link" target="_blank"><i class="fab fa-twitter"></i></a>
     </div>
+
+    <script>
+        // Adding Matrix characters dynamically
+        const matrixLayer = document.getElementById('matrix-layer');
+        
+        function createMatrixCharacter() {
+            const character = document.createElement('span');
+            character.className = 'matrix-character';
+            character.innerHTML = Math.random() > 0.9 ? '1' : '0'; // 10% chance for '1'
+            character.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+            return character;
+        }
+
+        function startMatrixAnimation() {
+            setInterval(() => {
+                const character = createMatrixCharacter();
+                matrixLayer.appendChild(character);
+                setTimeout(() => {
+                    character.remove();
+                }, 5000); // Remove characters after 5 seconds
+            }, 100); // Add a new character every 100 milliseconds
+        }
+
+        startMatrixAnimation();
+    </script>
 
 </body>
 </html>
